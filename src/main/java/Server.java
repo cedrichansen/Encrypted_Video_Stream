@@ -22,7 +22,7 @@ import Misc.Constants;
 
 public class Server {
 
-    private final float imageQuality = 0.45f;
+    private final float imageQuality = 0.99f;
     private Webcam webcam;
     private InetAddress group;
     private DatagramSocket socket;
@@ -87,12 +87,12 @@ public class Server {
 
 
     /**
-     * Sets the compression level for the images being sent over the stream. By default 45% of original Jpeg quality is being used (as specified in imageQuality field)
+     * Sets the compression level for the images being sent over the stream. By default 99% of original Jpeg quality is being used (as specified in imageQuality field)
      */
     private void setCompressionLevel() {
         JPEGImageWriteParam jpegParams = new JPEGImageWriteParam(null);
         jpegParams.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
-        jpegParams.setCompressionQuality(0.5f);
+        jpegParams.setCompressionQuality(imageQuality);
         writer = ImageIO.getImageWritersByFormatName("jpg").next();
         jpgWriteParam = writer.getDefaultWriteParam();
         jpgWriteParam.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
